@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".MainActivity">
 
     <EditText
@@ -58,6 +59,7 @@
 
     <Button
         android:id="@+id/button2"
+        android:textColor="@color/black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="37dp"
@@ -77,4 +79,14 @@
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="150dp"
+        android:entries="@array/languages"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="31dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button" />
 </androidx.constraintlayout.widget.ConstraintLayout>
