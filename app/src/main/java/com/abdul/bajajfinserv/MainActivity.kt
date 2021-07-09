@@ -23,7 +23,9 @@ class MainActivity : AppCompatActivity() {  //why the word compat,
         textView.text = nameEditText.text
         Toast.makeText(this,nameEditText.text,Toast.LENGTH_SHORT).show()
         var homeIntent: Intent;
-        homeIntent = Intent(this,HomeActivity::class.java)
+        homeIntent = Intent(this,HomeActivity::class.java).apply {
+            putExtra("mkey", nameEditText.text)
+        }
         startActivity(homeIntent)
 
     }
