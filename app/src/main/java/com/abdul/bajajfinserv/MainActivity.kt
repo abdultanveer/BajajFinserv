@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {  //why the word compat,
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_main)//show/inflate activity_main file
         nameEditText = findViewById(R.id.editTextTextPersonName) //instantiation, initialization
         textView = findViewById(R.id.resTextview)
     }
