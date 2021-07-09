@@ -1,5 +1,6 @@
 package com.abdul.bajajfinserv
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -21,5 +22,9 @@ class MainActivity : AppCompatActivity() {  //why the word compat,
     fun clickHandler(view: View) {
         textView.text = nameEditText.text
         Toast.makeText(this,nameEditText.text,Toast.LENGTH_SHORT).show()
+        var homeIntent: Intent;
+        homeIntent = Intent(this,HomeActivity::class.java)
+        startActivity(homeIntent)
+
     }
 }
