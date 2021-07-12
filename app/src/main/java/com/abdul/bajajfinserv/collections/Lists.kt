@@ -14,6 +14,11 @@ fun main() {
     println("Second element is: ${numbers[1]}")
     println("last  element is: ${numbers[numbers.size-1]}")
     println("Last index is: ${numbers.size-1}")
+    println("Contain 4: ${numbers.contains(4)}")
+    println("Contain 4: ${numbers.contains(7)}")
+
+
+
 
 
 
