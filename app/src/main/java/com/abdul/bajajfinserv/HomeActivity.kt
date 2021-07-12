@@ -4,15 +4,18 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.ContextMenu
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 
 class HomeActivity : AppCompatActivity() {
     lateinit var etHome: EditText
+    lateinit var button: Button
 
     var TAG = HomeActivity::class.simpleName
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,6 +23,8 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home) //layout inflater
         Log.i(TAG,"oncreate")
         etHome = findViewById<EditText>(R.id.etHome) //taking handle on the edittext that was inflated
+        button = findViewById(R.id.buttonSend)
+        registerForContextMenu(button)
 
       /* var name =  intent.getStringExtra("mkey")
         var hTextView = findViewById<TextView>(R.id.textViewhome).apply {
@@ -67,6 +72,19 @@ class HomeActivity : AppCompatActivity() {
 
         }
         return true
+    }
+
+    override fun onCreateContextMenu(menu: ContextMenu?, v: View?, menuInfo: ContextMenu.ContextMenuInfo?) {
+        super.onCreateContextMenu(menu, v, menuInfo)
+        menuInflater.inflate(R.menu.menu_home,menu)
+    }
+
+    override fun onContextItemSelected(item: MenuItem): Boolean {
+         super.onContextItemSelected(item)
+        when(item.itemId){
+            R.id.fMenuItem -> {Toast.makeText(this, "context first item selected",Toast.LENGTH_SHORT).show()}
+        }
+        return true;
     }
 
 
