@@ -1,6 +1,7 @@
 package com.abdul.bajajfinserv
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.AlarmClock
@@ -26,11 +27,13 @@ class MainActivity : AppCompatActivity() {  //why the word compat,
     }
 
     fun clickHandler(view: View) {
+        when(view.id){
+            R.id.buttonLogin -> {  startHomeResult() }
+            R.id.buttonCancel -> { dialActivity()}
+
+        }
         Log.v(TAG,"clickHandler")
        // throw  NullPointerException()
-        var homeIntent: Intent;
-        homeIntent = Intent(this,HomeActivity::class.java)
-        startActivityForResult(homeIntent,123)
         //createAlarm("wake up",3,18)
        /* textView.text = nameEditText.text
         Toast.makeText(this,nameEditText.text,Toast.LENGTH_SHORT).show()
@@ -42,6 +45,16 @@ class MainActivity : AppCompatActivity() {  //why the word compat,
 
     }
 
+    private fun startHomeResult() {
+        var homeIntent: Intent;
+        homeIntent = Intent(this, HomeActivity::class.java)
+        startActivityForResult(homeIntent, 123)
+    }
+
+    fun dialActivity(){
+        val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:98765432"))
+        startActivity(intent)
+    }
 
     fun createAlarm(message: String, hour: Int, minutes: Int) {
         val intent = Intent(AlarmClock.ACTION_SET_ALARM).apply {
