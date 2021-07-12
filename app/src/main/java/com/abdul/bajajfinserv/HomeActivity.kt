@@ -4,9 +4,12 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 
 class HomeActivity : AppCompatActivity() {
     lateinit var etHome: EditText
@@ -14,9 +17,9 @@ class HomeActivity : AppCompatActivity() {
     var TAG = HomeActivity::class.simpleName
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
+        setContentView(R.layout.activity_home) //layout inflater
         Log.i(TAG,"oncreate")
-        etHome = findViewById<EditText>(R.id.etHome)
+        etHome = findViewById<EditText>(R.id.etHome) //taking handle on the edittext that was inflated
 
       /* var name =  intent.getStringExtra("mkey")
         var hTextView = findViewById<TextView>(R.id.textViewhome).apply {
@@ -49,6 +52,23 @@ class HomeActivity : AppCompatActivity() {
         Log.i(TAG,"onstop")
 
     }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+         super.onCreateOptionsMenu(menu)
+        menuInflater.inflate(R.menu.menu_home,menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+         super.onOptionsItemSelected(item)
+        when(item.itemId){
+            R.id.fMenuItem -> { Toast.makeText(this,"first item selected",Toast.LENGTH_SHORT).show()}
+            R.id.sMenuItem -> { Toast.makeText(this,"second item selected",Toast.LENGTH_SHORT).show()}
+
+        }
+        return true
+    }
+
 
     fun sendResult(view: View) {
         var result = etHome.text.toString()
