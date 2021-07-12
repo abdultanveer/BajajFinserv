@@ -8,12 +8,9 @@ import android.view.ContextMenu
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
     lateinit var etHome: EditText
     lateinit var button: Button
 
@@ -21,6 +18,15 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home) //layout inflater
+        val dishes = arrayListOf<String>("noodles","spaghetti","pasta","vada pav")
+        val listview: ListView = findViewById<ListView>(R.id.dishesListview)
+
+        val arrayAdapter: ArrayAdapter<*>
+        arrayAdapter = ArrayAdapter(this,
+        android.R.layout.simple_list_item_1,dishes)
+        listview.adapter = arrayAdapter
+        listview.setOnItemClickListener(this)
+
         Log.i(TAG,"oncreate")
         etHome = findViewById<EditText>(R.id.etHome) //taking handle on the edittext that was inflated
         button = findViewById(R.id.buttonSend)
@@ -97,6 +103,10 @@ class HomeActivity : AppCompatActivity() {
 
     }
 
+    override fun onItemClick(adapterview: AdapterView<*>?, row: View?, position: Int, rowId: Long) {
+        var nameItem = adapterview?.getItemAtPosition(position)
+        Toast.makeText(this,"clicke position-"+position+" name ="+nameItem,Toast.LENGTH_SHORT).show()
+    }
 
 
 }

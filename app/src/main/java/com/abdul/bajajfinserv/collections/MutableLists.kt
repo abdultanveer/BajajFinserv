@@ -10,14 +10,23 @@ fun main() {
     println("add spaghetti: ${entries.add("spaghetti")}")
     println("adding a list: ${entries.addAll(moreItems)}")
     //entries.add(10)
-    println("Remove spaghetti: ${entries.remove("spaghetti")}")
-    println("Remove rice: ${entries.remove("rice")}")
-    println("Remove rice: ${entries.removeAt(0)}")
-    println("Remove all/ clear list: ${entries.clear()}")
+   // println("Remove spaghetti: ${entries.remove("spaghetti")}")
+  //  println("Remove rice: ${entries.remove("rice")}")
+  //  println("Remove rice: ${entries.removeAt(0)}")
+   // println("Remove all/ clear list: ${entries.clear()}")
 
 
 
     println("Entries: $entries")
     println("empty? : ${entries.isEmpty()}")
+
+    /*for(dish in entries){
+        println(dish)
+    }*/
+    var index = 0
+    while(index < entries.size){
+        println(entries[index])
+        index++
+    }
 
 }
