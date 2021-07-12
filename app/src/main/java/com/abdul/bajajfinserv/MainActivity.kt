@@ -27,8 +27,11 @@ class MainActivity : AppCompatActivity() {  //why the word compat,
 
     fun clickHandler(view: View) {
         Log.v(TAG,"clickHandler")
-
-        createAlarm("wake up",3,18)
+       // throw  NullPointerException()
+        var homeIntent: Intent;
+        homeIntent = Intent(this,HomeActivity::class.java)
+        startActivityForResult(homeIntent,123)
+        //createAlarm("wake up",3,18)
        /* textView.text = nameEditText.text
         Toast.makeText(this,nameEditText.text,Toast.LENGTH_SHORT).show()
         var homeIntent: Intent;
@@ -48,6 +51,14 @@ class MainActivity : AppCompatActivity() {  //why the word compat,
         }
         if (intent.resolveActivity(packageManager) != null) {
             startActivity(intent)
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(requestCode == 123 && resultCode == RESULT_OK) {
+            var result = data?.getStringExtra("resultkey")
+            Toast.makeText(this,result,Toast.LENGTH_SHORT).show()
         }
     }
 }
