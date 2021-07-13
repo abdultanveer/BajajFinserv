@@ -1,6 +1,7 @@
 package com.abdul.bajajfinserv.adapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,17 +20,22 @@ class ItemAdapter(private val context: Context,
                   private val  dataset: List<Affirmation>)
     :RecyclerView.Adapter<ItemAdapter.ItemViewHolder>(){
 
+    val TAG = ItemAdapter::class.simpleName
+
     /**
      * he will hold the views that would be recycled with new data
      */
     class ItemViewHolder(private val view: View):RecyclerView.ViewHolder(view){
+
         val vhtextView: TextView = view.findViewById(R.id.textViewListItem)
+
     }
 
     /**
      * go to market and buy new plank or create a new list row layout
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
+        Log.i(TAG,"onCreateViewHolder")
         // TODO: 13-07-2021 return a new itemviewholder
         val rowLayout = LayoutInflater.from(parent.context)
             .inflate(R.layout.list_item,parent,false)
@@ -41,6 +47,8 @@ class ItemAdapter(private val context: Context,
      * his handwriting is good, he'll write the dish name on the plank ---WRITER
      */
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
+        Log.i(TAG,"onBindViewHolder")
+
         val item = dataset[position] //item will be of type affirmation since dataset is of type list<affirmation>
         holder.vhtextView.text = context.resources.getString(item.stringResourceId)
     }
@@ -49,6 +57,8 @@ class ItemAdapter(private val context: Context,
      * keep a count of no of items in the dataset
      */
     override fun getItemCount(): Int {
-    return  dataset.size
+        Log.i(TAG,"getItemCount")
+
+        return  dataset.size
     }
 }
