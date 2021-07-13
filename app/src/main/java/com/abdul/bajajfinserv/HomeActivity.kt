@@ -1,6 +1,7 @@
 package com.abdul.bajajfinserv
 
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -14,6 +15,8 @@ class HomeActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
     lateinit var etHome: EditText
     lateinit var button: Button
     lateinit var textView: TextView
+    private var fileName = "bajaj_sharedprefs"
+    private lateinit var sharedPreferences: SharedPreferences
 
     var TAG = HomeActivity::class.simpleName
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,6 +24,7 @@ class HomeActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
         setContentView(R.layout.activity_home) //layout inflater
         etHome = findViewById(R.id.etHome)
         textView = findViewById(R.id.textViewHome)
+
 
        /* val dishes = arrayListOf<String>("noodles","spaghetti","pasta","vada pav")
         val listview: ListView = findViewById<ListView>(R.id.dishesListview)
@@ -53,13 +57,37 @@ class HomeActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
     override fun onResume() {
         super.onResume()
         Log.i(TAG,"onresume -- restore the game state")
+            restoreData()
 
+    }
+
+    private fun restoreData() {
+        //open the file
+        sharedPreferences = getSharedPreferences(fileName, MODE_PRIVATE)
+        //read from the file
+        var data = sharedPreferences.getString("mkey","")
+        //set the data into the edittext
+        etHome.setText(data)
     }
 
     override fun onPause() {
         super.onPause()
         Log.i(TAG,"onpause --- store the game state")
+        saveData()
 
+    }
+
+    private fun saveData() {
+        //get data from edittext
+        var data = etHome.text.toString()
+        //create file
+        sharedPreferences = getSharedPreferences(fileName, MODE_WORLD_WRITEABLE)
+        //open the file
+        var editor = sharedPreferences.edit()
+        //write to the file
+        editor.putString("mkey",data)
+        //save the file
+        editor.apply()
     }
 
     override fun onStop() {
