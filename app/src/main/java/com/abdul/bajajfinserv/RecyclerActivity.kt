@@ -3,6 +3,8 @@ package com.abdul.bajajfinserv
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
+import com.abdul.bajajfinserv.adapter.ItemAdapter
 import com.abdul.bajajfinserv.data.Datasource
 
 class RecyclerActivity : AppCompatActivity() {
@@ -11,5 +13,10 @@ class RecyclerActivity : AppCompatActivity() {
         setContentView(R.layout.activity_recycler)
         val textView: TextView = findViewById(R.id.textViewRA)
         textView.text = Datasource().loadAffirmations().size.toString()
+
+        val myDataset = Datasource().loadAffirmations()
+        val recyclerView = findViewById<RecyclerView>(findViewById(R.id.recyclerView))
+        recyclerView.adapter = ItemAdapter(this,myDataset)
+        recyclerView.setHasFixedSize(true)
     }
 }
