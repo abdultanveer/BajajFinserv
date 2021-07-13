@@ -5,4 +5,7 @@
         <item name="android:textSize">22sp</item>
         <item name="android:textColor">@color/design_default_color_on_secondary</item>
     </style>
+    <style name="redfont" parent="bajaj_logo_font_style">
+        <item name="android:textColor">@android:color/holo_red_light</item>
+    </style>
 </resources>
