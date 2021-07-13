@@ -13,12 +13,16 @@ import android.widget.*
 class HomeActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
     lateinit var etHome: EditText
     lateinit var button: Button
+    lateinit var textView: TextView
 
     var TAG = HomeActivity::class.simpleName
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home) //layout inflater
-        val dishes = arrayListOf<String>("noodles","spaghetti","pasta","vada pav")
+        etHome = findViewById(R.id.etHome)
+        textView = findViewById(R.id.textViewHome)
+
+       /* val dishes = arrayListOf<String>("noodles","spaghetti","pasta","vada pav")
         val listview: ListView = findViewById<ListView>(R.id.dishesListview)
 
         val arrayAdapter: ArrayAdapter<*>
@@ -30,7 +34,7 @@ class HomeActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
         Log.i(TAG,"oncreate")
         etHome = findViewById<EditText>(R.id.etHome) //taking handle on the edittext that was inflated
         button = findViewById(R.id.buttonSend)
-        registerForContextMenu(button)
+        registerForContextMenu(button)*/
 
       /* var name =  intent.getStringExtra("mkey")
         var hTextView = findViewById<TextView>(R.id.textViewhome).apply {
@@ -95,11 +99,12 @@ class HomeActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
 
 
     fun sendResult(view: View) {
-        var result = etHome.text.toString()
+        textView.text = etHome.text.toString()
+       /* var result = etHome.text.toString()
         var resIntent = Intent()
         resIntent.putExtra("resultkey",result)
         setResult(RESULT_OK,resIntent)
-        finish()
+        finish()*/
 
     }
 

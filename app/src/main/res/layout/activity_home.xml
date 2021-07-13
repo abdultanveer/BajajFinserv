@@ -42,9 +42,8 @@
     </ListView>
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/textViewHome"
         style="@style/redfont"
-        android:textColor="@color/design_default_color_primary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
