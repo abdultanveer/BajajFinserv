@@ -14,4 +14,13 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+
+
+    <string name="aff1">i am strong</string>
+    <string name="aff2">i workout everyday</string>
+    <string name="aff3">i am grateful</string>
+    <string name="aff4">i believe in myself</string>
+    <string name="aff5">i am good</string>
+    <string name="aff6">i am a reader</string>
+
 </resources>
